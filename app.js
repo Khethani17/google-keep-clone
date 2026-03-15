@@ -51,6 +51,13 @@ class App {
     }
 
     addEventListeners() {
+
+        const closeBtn = this.$activeForm.querySelector(".close-btn");
+    
+        closeBtn.addEventListener("click", () => {
+            this.closeActiveForm();
+        });
+    
         // Main body click handler
         document.body.addEventListener("click", (event) => {
             this.handleFormClick(event);
