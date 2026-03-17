@@ -90,6 +90,12 @@ nav {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.right-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
 input:focus {
     outline: none;
 }

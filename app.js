@@ -54,9 +54,13 @@ class App {
 
         const closeBtn = this.$activeForm.querySelector(".close-btn");
     
-        closeBtn.addEventListener("click", () => {
-            this.closeActiveForm();
-        });
+       closeBtn.addEventListener("click", () => {
+    const title = this.$noteTitle.value;
+    const text = this.$noteText.value;
+
+    this.addNote({ title, text });
+    this.closeActiveForm();
+});
     
         // Main body click handler
         document.body.addEventListener("click", (event) => {
@@ -171,13 +175,13 @@ class App {
 
     //  NOTE CRUD 
 
-    addNote({ title, text }) {
-        if (text !== "") {
-            const newNote = new Note(cuid(), title, text);
-            this.notes = [...this.notes, newNote];
-            this.render();
-        }
+  addNote({ title, text }) {
+    if (title.trim() !== "" || text.trim() !== "") {
+        const newNote = new Note(cuid(), title, text);
+        this.notes = [...this.notes, newNote];
+        this.render();
     }
+}
 
     editNote(id, { title, text }) {
         this.notes = this.notes.map((note) => {
